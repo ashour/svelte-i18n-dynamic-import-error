@@ -1,10 +1,13 @@
-import App from './App.svelte';
+import { register, init } from "svelte-i18n";
+import App from "./App.svelte";
 
-const app = new App({
-	target: document.body,
-	props: {
-		name: 'world'
-	}
+register("en", () => import("./lang/en.json"));
+
+init({
+  fallbackLocale: "en",
+  initialLocale: "en",
 });
+
+const app = new App({ target: document.body });
 
 export default app;
